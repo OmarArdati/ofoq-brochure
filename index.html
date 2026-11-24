@@ -1,0 +1,625 @@
+<title>Espace Nakhlé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap">
+<style>
+/* Concept: a calm sales document on screen. Architectural white ground, charcoal bands, olive as the one accent. Residences are the product; the filter and the modal do the work. */
+:root{
+  --bg:#F4F4F2; --surface:#FFFFFF; --ink:#1A1A1A; --muted:#5E5F5A; --line:#D7D7D2; --accent:#6B6F5A; --accent-ink:#FFFFFF;
+  --band:#1A1A1A; --band-ink:#F4F4F2; --band-muted:#B9B9B4; --chip:#E9E9E5; --t1:#B0B0B0; --t2:#6B6F5A; --t3:#1A1A1A;
+  --f-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif; --f-ar:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px)); --gutr:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141413; --surface:#1E1E1D; --ink:#EFEFEB; --muted:#A8A8A2; --line:#34342F; --accent:#A3A98C; --accent-ink:#141413;
+  --band:#0C0C0B; --band-ink:#F1F1ED; --band-muted:#A8A8A2; --chip:#262624; --t1:#7C7C78; --t2:#A3A98C; --t3:#EFEFEB; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141413; --surface:#1E1E1D; --ink:#EFEFEB; --muted:#A8A8A2; --line:#34342F; --accent:#A3A98C; --accent-ink:#141413;
+  --band:#0C0C0B; --band-ink:#F1F1ED; --band-muted:#A8A8A2; --chip:#262624; --t1:#7C7C78; --t2:#A3A98C; --t3:#EFEFEB; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-weight:400;font-size:16px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+html[dir=rtl] body{font-family:var(--f-ar)}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--accent)}
+html[dir=rtl] .eyebrow{letter-spacing:0;font-size:.85rem}
+h1,h2,h3,h4{font-weight:300;margin:0;text-wrap:balance;line-height:1.15}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);margin-top:.5rem}
+.lead{max-width:62ch;color:var(--muted);font-size:1.05rem;margin:1rem 0 0}
+section{padding-block:clamp(48px,8vw,96px)}
+.logo-d{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo-l{display:none}:root:not([data-theme="light"]) .logo-d{display:block}}
+:root[data-theme="dark"] .logo-l{display:none}:root[data-theme="dark"] .logo-d{display:block}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+header.top .brand img{height:28px;width:auto}
+header.top nav{display:flex;gap:22px;margin-inline-start:auto;font-size:.82rem}
+header.top nav a{text-decoration:none;color:var(--muted);white-space:nowrap}
+header.top nav a:hover{color:var(--ink)}
+.lang{border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 14px;font-size:.8rem;font-weight:500;white-space:nowrap}
+.lang:hover{border-color:var(--accent)}
+@media (max-width:900px){header.top nav{display:none}header.top .lang{margin-inline-start:auto}}
+
+/* hero */
+.hero{position:relative;background:var(--band);color:var(--band-ink);overflow:hidden}
+.hero img.bg{width:100%;height:min(62vw,560px);min-height:320px;object-fit:cover;opacity:.92}
+.hero .panel{position:relative;background:var(--band);padding:28px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:-.01em}
+.hero p{color:var(--band-muted);margin:.8rem 0 0;max-width:46ch}
+.hero .tag{font-size:.72rem;letter-spacing:.28em;color:var(--band-muted);margin-bottom:.9rem;font-weight:500}
+html[dir=rtl] .hero .tag{letter-spacing:0;font-size:.85rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;border:1px solid currentColor;background:transparent;border-radius:2px;padding:.7rem 1.3rem;font-size:.9rem;font-weight:500;text-decoration:none;line-height:1.2}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.hero .btn{color:var(--band-ink)}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.hero .logo-w{height:34px;width:auto;margin-bottom:18px}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.hero .ctas{justify-content:flex-start}}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line);margin-top:2.5rem}
+.fact{padding:1.4rem 1rem 1.2rem 0;border-inline-end:1px solid var(--line);padding-inline-start:1rem}
+.fact:first-child{padding-inline-start:0}.fact:last-child{border-inline-end:0}
+.fact b{display:block;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.fact span{display:block;font-size:.78rem;color:var(--muted);margin-top:.4rem;line-height:1.35}
+@media (max-width:900px){.facts{grid-template-columns:repeat(3,1fr)}.fact{border-top:1px solid var(--line);margin-top:-1px}.fact:nth-child(3n){border-inline-end:0}.fact:nth-child(3n+1){padding-inline-start:0}}
+@media (max-width:520px){.facts{grid-template-columns:repeat(2,1fr)}.fact:nth-child(3n){border-inline-end:1px solid var(--line)}.fact:nth-child(2n){border-inline-end:0}.fact:nth-child(2n+1){padding-inline-start:0}.fact:nth-child(3n+1):not(:nth-child(2n+1)){padding-inline-start:1rem}}
+
+/* filter */
+.filters{display:grid;gap:14px;margin-top:2rem;padding:18px;background:var(--surface);border:1px solid var(--line)}
+.frow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.frow>label,.frow>.fl{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);min-width:92px;font-weight:500}
+html[dir=rtl] .frow>.fl{letter-spacing:0;font-size:.82rem}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:.42rem .95rem;font-size:.85rem;line-height:1.2;transition:background .12s,border-color .12s}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+select{font:inherit;font-size:.85rem;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:2px;padding:.45rem .7rem}
+.fmeta{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:1rem;font-size:.85rem;color:var(--muted)}
+.fmeta button{background:none;border:0;text-decoration:underline;padding:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:1rem}
+.card{background:var(--surface);border:1px solid var(--line);text-align:start;padding:0;display:flex;flex-direction:column;overflow:hidden;transition:border-color .12s,transform .12s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .im{background:#fff;height:210px;padding:10px;border-bottom:1px solid var(--line)}
+.card .im img{height:100%;width:100%;object-fit:contain;mix-blend-mode:multiply}
+.card .bd{padding:14px 16px 16px;display:grid;gap:6px}
+.card .row1{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card .code{font-weight:600;letter-spacing:.02em;font-variant-numeric:tabular-nums;direction:ltr}
+.card .tb{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;color:var(--muted)}
+.card .dot{width:9px;height:9px;border-radius:50%;background:var(--t2);display:inline-block}
+.card .dot.t1{background:var(--t1)}.card .dot.t3{background:var(--t3)}
+.card .meta{font-size:.84rem;color:var(--muted)}
+.card .price{font-size:1.15rem;font-weight:500;font-variant-numeric:tabular-nums;margin-top:4px}
+.card .price small{font-size:.72rem;color:var(--muted);font-weight:400;margin-inline-end:6px}
+.card .gt{font-size:.74rem;color:var(--accent);font-weight:500}
+.empty{padding:40px 0;color:var(--muted)}
+
+/* band sections */
+.band{background:var(--band);color:var(--band-ink)}
+.band .eyebrow{color:var(--band-muted)}
+.band .lead{color:var(--band-muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.8rem}
+.band .chip{background:transparent;border-color:#3b3b38;color:var(--band-ink)}
+.band .chip[aria-pressed=true]{background:var(--band-ink);color:#1A1A1A;border-color:var(--band-ink)}
+.plan{margin-top:1.4rem;background:#fff;border:1px solid var(--line);padding:0;width:100%;cursor:zoom-in}
+.plan img{width:100%;height:auto}
+.lvgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:1.6rem}
+.lvgrid h4{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--band-muted);padding-bottom:.6rem;border-bottom:1px solid #3b3b38;margin-bottom:.8rem}
+html[dir=rtl] .lvgrid h4{letter-spacing:0;font-size:.9rem}
+.lvgrid .chips{display:flex;flex-wrap:wrap;gap:8px}
+.ucode{border:1px solid #3b3b38;background:transparent;color:var(--band-ink);border-radius:2px;padding:.45rem .7rem;font-size:.8rem;display:inline-flex;gap:8px;align-items:center;direction:ltr}
+.ucode:hover{border-color:var(--band-ink)}
+.ucode i{width:8px;height:8px;border-radius:50%;display:inline-block;background:#B0B0B0}
+.ucode i.t2{background:#8d9276}.ucode i.t3{background:#F4F4F2}
+.ucode span{color:var(--band-muted)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.8rem;color:var(--band-muted);margin-top:1rem}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@media (max-width:760px){.lvgrid{grid-template-columns:1fr}}
+
+/* amenities */
+.am{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2rem;border-top:1px solid var(--line)}
+.am div{padding:1.4rem 1.2rem 1.4rem 0;border-bottom:1px solid var(--line)}
+html[dir=rtl] .am div{padding:1.4rem 0 1.4rem 1.2rem}
+.am h4{font-size:1.05rem;font-weight:500;margin-bottom:.35rem}
+.am p{margin:0;color:var(--muted);font-size:.92rem}
+.am svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.7rem}
+@media (max-width:760px){.am{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.am{grid-template-columns:1fr}}
+.green{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:var(--band);color:var(--band-ink);padding:26px 30px;margin-top:2rem}
+.green big{font-size:clamp(2.4rem,6vw,3.6rem);font-weight:300;line-height:1;white-space:nowrap}
+.green p{margin:0;color:var(--band-muted);max-width:62ch;font-size:.95rem}
+.green .bar{height:6px;background:#333;margin-top:12px;max-width:340px}.green .bar i{display:block;height:100%;background:#A3A98C}
+@media (max-width:560px){.green{grid-template-columns:1fr;gap:10px}}
+
+/* gallery */
+.gal{columns:3 260px;column-gap:14px;margin-top:2rem}
+.gal button{display:block;width:100%;aspect-ratio:3/2;border:0;padding:0;margin:0 0 14px;background:var(--surface);break-inside:avoid;cursor:zoom-in;position:relative;overflow:hidden}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gal button:hover img{transform:scale(1.03)}
+.note{font-size:.78rem;color:var(--muted);margin-top:1rem}
+
+/* location */
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start;margin-top:2rem}
+.mapbox{position:relative;border:1px solid var(--line);background:#e8e8e4;direction:ltr}
+.mapbox img{width:100%;height:auto;image-rendering:auto}
+.mapbox .pin{position:absolute;left:50%;top:49.8%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 0 0 7px rgba(26,26,26,.18)}
+.mapbox .pl{position:absolute;left:50%;top:49.8%;transform:translate(-50%,-34px);background:#1A1A1A;color:#fff;font-size:.62rem;letter-spacing:.16em;padding:3px 8px;white-space:nowrap;font-weight:600}
+.mapbox .at{position:absolute;right:6px;bottom:4px;font-size:.62rem;color:#555;background:rgba(255,255,255,.8);padding:0 4px}
+.coord{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:.88rem;color:var(--muted)}
+.band .coord{color:var(--band-muted)}.band .coord b{color:var(--band-ink)}
+.coord b{color:var(--ink);font-weight:500;direction:ltr;white-space:nowrap}
+.drive{display:grid;gap:14px;margin-top:1rem}
+.drive .r{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:.95rem}
+.drive .r b{font-weight:500;font-variant-numeric:tabular-nums}
+.drive .r .tr{grid-column:1/-1;height:4px;background:var(--chip)}
+.drive .r .tr i{display:block;height:100%;background:var(--accent)}
+@media (max-width:860px){.loc{grid-template-columns:1fr}}
+
+/* payment */
+.pay3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:2rem}
+.pcard{background:var(--surface);border:1px solid var(--line);padding:22px}
+.pcard .bn{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500}
+html[dir=rtl] .pcard .bn{letter-spacing:0;font-size:.85rem}
+.pcard .mm{font-size:3rem;font-weight:300;line-height:1.1;margin-top:.4rem;font-variant-numeric:tabular-nums}
+.pcard .ml{font-size:.85rem;color:var(--muted)}
+.pcard .dl{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+.pcard .dl b{display:block;color:var(--ink);font-size:1.05rem;font-weight:500;margin-top:2px}
+.pcard .fr{margin-top:.9rem;font-size:.82rem;display:grid;gap:4px}
+.pcard .fr div{display:flex;justify-content:space-between;gap:8px}
+.pcard .fr b{font-weight:500;font-variant-numeric:tabular-nums}
+.seg{display:flex;height:46px;margin-top:1.4rem;font-size:.82rem;color:#fff}
+.seg div{display:flex;align-items:center;gap:8px;padding:0 12px;white-space:nowrap;overflow:hidden}
+.seg b{font-weight:500}
+.seg .s1{background:#1A1A1A;border:1px solid #3a3a38}.seg .s2{background:var(--accent);color:var(--accent-ink)}.seg .s3{background:#B0B0B0;color:#1A1A1A;padding:0 6px}
+.calc{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:28px;margin-top:2.2rem;padding:24px;background:var(--surface);border:1px solid var(--line)}
+.calc label{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;font-weight:500}
+html[dir=rtl] .calc label{letter-spacing:0;font-size:.85rem}
+.calc select{width:100%}
+.calc .out{display:grid;gap:10px;font-variant-numeric:tabular-nums}
+.calc .ln{display:flex;justify-content:space-between;gap:12px;padding:.5rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.calc .ln small{display:block;color:var(--muted);font-size:.76rem}
+.calc .ln b{font-weight:500;white-space:nowrap}
+.calc .tot{font-size:1.2rem}
+.valid{margin-top:1.6rem;padding:14px 18px;background:var(--accent);color:var(--accent-ink);font-size:.92rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.stor{margin-top:2rem;overflow-x:auto}
+.stor table{width:100%;border-collapse:collapse;font-size:.86rem;font-variant-numeric:tabular-nums;min-width:520px}
+.stor th,.stor td{padding:.55rem .6rem;border-bottom:1px solid var(--line);text-align:start;white-space:nowrap}
+.stor th{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+@media (max-width:860px){.pay3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}}
+
+/* specs */
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:1rem 0;font-size:1.05rem;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details ul{margin:0 0 1.2rem;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem 36px}
+details li{font-size:.92rem;color:var(--muted);padding-inline-start:14px;position:relative}
+details li::before{content:"";position:absolute;inset-inline-start:0;top:.72em;width:7px;height:1px;background:var(--accent)}
+details li b{color:var(--ink);font-weight:500}
+@media (max-width:760px){details ul{grid-template-columns:1fr}}
+
+/* team */
+.team{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:2rem}
+.tp{background:var(--surface);border:1px solid var(--line);padding:26px}
+.tp.dk{background:var(--band);color:var(--band-ink);border-color:var(--band)}
+.tp .lg{height:48px;width:auto;margin-bottom:16px}
+.tp .role{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.tp.dk .role{color:var(--band-muted)}
+html[dir=rtl] .tp .role{letter-spacing:0;font-size:.85rem}
+.tp q{display:block;font-size:1.15rem;font-weight:300;margin:.6rem 0;quotes:none}
+.tp p{margin:0 0 1rem;color:var(--muted);font-size:.92rem}.tp.dk p{color:var(--band-muted)}
+.ths{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.ths figure{margin:0}.ths img{aspect-ratio:1;object-fit:cover;width:100%}
+.ths figcaption{font-size:.64rem;color:var(--muted);margin-top:3px;line-height:1.25;direction:ltr}.tp.dk .ths figcaption{color:var(--band-muted)}
+@media (max-width:860px){.team{grid-template-columns:1fr}}
+.name{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);margin-top:2rem}
+.name h3{font-size:1.5rem}.name .k{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:.4rem}
+.name p{color:var(--muted);margin:.5rem 0 0}
+@media (max-width:760px){.name{grid-template-columns:1fr}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+.contact h2{color:var(--band-ink)}
+.crow{display:grid;grid-template-columns:130px 1fr auto;gap:12px;align-items:center;padding:.85rem 0;border-bottom:1px solid #3b3b38;font-size:.98rem}
+.crow span{color:var(--band-muted);font-size:.82rem}
+.crow b{font-weight:500;direction:ltr;text-align:start;overflow-wrap:anywhere}
+html[dir=rtl] .crow b{text-align:end}
+.cp{background:transparent;border:1px solid #3b3b38;color:var(--band-ink);border-radius:2px;padding:.3rem .75rem;font-size:.76rem}
+.cp:hover{border-color:var(--band-ink)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:1.6rem}
+.band .btn{color:var(--band-ink)}.band .btn.solid{color:var(--accent-ink)}
+.credits{display:flex;gap:36px;align-items:center;margin-top:2rem;flex-wrap:wrap}
+.credits div{font-size:.66rem;letter-spacing:.2em;color:var(--band-muted);display:grid;gap:8px}
+.credits img{height:34px;width:auto}
+@media (max-width:860px){.contact{grid-template-columns:1fr}.crow{grid-template-columns:100px 1fr auto}}
+footer{background:var(--band);color:var(--band-muted);padding-block:26px 40px;font-size:.76rem;border-top:1px solid #2a2a28}
+footer p{margin:0 0 .5rem;max-width:90ch}
+footer .tag{letter-spacing:.3em;color:var(--band-ink);font-weight:500;margin-bottom:1rem;font-size:.72rem}
+
+/* modal */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(10,10,10,.72);display:none;overflow-y:auto;overscroll-behavior:contain}
+.ov.on{display:block}
+.md{background:var(--bg);max-width:1080px;margin:max(16px,env(safe-area-inset-top,0px)) auto 24px;position:relative;border:1px solid var(--line)}
+.md .x{position:absolute;inset-inline-end:10px;top:10px;z-index:3;border:1px solid var(--line);background:var(--surface);width:38px;height:38px;border-radius:50%;font-size:1.2rem;line-height:1}
+.md .nv{position:absolute;inset-inline-end:58px;top:10px;z-index:3;display:flex;gap:6px}
+.md .nv button{border:1px solid var(--line);background:var(--surface);width:38px;height:38px;border-radius:50%;font-size:1rem;line-height:1}
+.mg{display:grid;grid-template-columns:1.25fr 1fr}
+.mimg{background:#fff;padding:18px;display:flex;flex-direction:column;gap:12px;border-inline-end:1px solid var(--line)}
+.mimg .tabs{margin:0 0 0;gap:6px}
+.mimg .tabs .chip{background:#F4F4F2;color:#1A1A1A;border-color:#D7D7D2}
+.mimg .tabs .chip[aria-pressed=true]{background:#1A1A1A;color:#fff;border-color:#1A1A1A}
+.mimg .vw{flex:1;min-height:280px;display:flex;align-items:center;justify-content:center;cursor:zoom-in;border:0;background:#fff;padding:0}
+.mimg .vw img{max-height:68vh;width:auto;max-width:100%;object-fit:contain}
+.mtx{padding:64px 26px 26px;display:grid;gap:16px;align-content:start}
+.mtx .bk{display:flex;align-items:center;gap:12px}
+.mtx .bk img{height:44px;width:auto}
+.mtx h3{font-size:2rem;font-weight:300;direction:ltr;text-align:start}
+html[dir=rtl] .mtx h3{text-align:end}
+.mtx .sub{color:var(--muted);font-size:.92rem}
+.kv{display:grid;gap:0;font-size:.92rem}
+.kv div{display:flex;justify-content:space-between;gap:12px;padding:.5rem 0;border-bottom:1px solid var(--line)}
+.kv span{color:var(--muted)}.kv b{font-weight:500;font-variant-numeric:tabular-nums;text-align:end}
+.kv .pr b{font-size:1.25rem}
+.pbar{display:flex;height:10px}
+.pbar i{display:block;height:100%}.pbar i:nth-child(1){background:#1A1A1A;width:20%}.pbar i:nth-child(2){background:var(--accent);width:75%}.pbar i:nth-child(3){background:#B0B0B0;width:5%}
+html[data-theme=dark] .pbar i:nth-child(1){background:#EFEFEB}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pbar i:nth-child(1){background:#EFEFEB}}
+.chips2{display:flex;flex-wrap:wrap;gap:6px}
+.chips2 span{background:var(--chip);border-radius:999px;padding:.28rem .75rem;font-size:.8rem}
+.same{font-size:.84rem;color:var(--muted)}
+.same button{border:0;background:none;padding:0;text-decoration:underline;margin-inline-end:8px;direction:ltr;color:var(--ink)}
+.small{font-size:.74rem;color:var(--muted)}
+@media (max-width:860px){.mtx{padding-top:26px}.mg{grid-template-columns:1fr}.mimg{border-inline-end:0;border-bottom:1px solid var(--line);padding-top:60px}.mimg .vw img{max-height:60vh}}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(8,8,8,.92);display:none;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px 16px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;background:#fff}
+.lb.dark img{background:transparent}
+.toast{position:fixed;inset-inline:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));margin:0 auto;width:max-content;max-width:90%;background:var(--ink);color:var(--bg);padding:.6rem 1.1rem;font-size:.85rem;z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+@media (max-width:560px){.grid{grid-template-columns:1fr 1fr;gap:10px}.card .im{height:150px;padding:6px}.card .bd{padding:10px 11px 12px}.card .price{font-size:1rem}.card .meta{font-size:.76rem}.card .row1{flex-direction:column;gap:2px}.card .price small{display:block}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top" data-go="top" aria-label="Espace Nakhlé"><img class="logo-l" src="img/Ofoq_logo_wordmark_transparent_dark.png" alt="Ofoq Development"><img class="logo-d" src="img/Ofoq_logo_wordmark_transparent_white.png" alt="Ofoq Development"></a>
+  <nav id="nav"></nav>
+  <button class="lang" id="lang" type="button" aria-label="Language"></button>
+</div></header>
+
+<main id="top">
+<div class="hero">
+  <img class="bg" src="img/im-004_t.jpg" srcset="img/im-004_t.jpg 640w, img/im-004.jpg 1500w" sizes="100vw" alt="">
+  <div class="panel"><div class="wrap">
+    <div><div class="tag" data-i="tag"></div><h1>Espace Nakhlé</h1><p data-i="hero_sub"></p></div>
+    <div class="ctas"><a class="btn solid" href="#residences" data-go="residences" data-i="cta_explore"></a><a class="btn" href="#contact" data-go="contact" data-i="cta_contact"></a></div>
+  </div></div>
+</div>
+
+<section id="development"><div class="wrap">
+  <div class="eyebrow" data-i="dev_eb"></div>
+  <h2 data-i="dev_h"></h2>
+  <p class="lead" data-i="dev_p"></p>
+  <div class="facts" id="facts"></div>
+</div></section>
+
+<section id="residences" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow" data-i="res_eb"></div>
+  <h2 data-i="res_h"></h2>
+  <p class="lead" data-i="res_p"></p>
+  <div class="filters" id="filters"></div>
+  <div class="fmeta"><span id="count"></span><button type="button" id="reset" data-i="reset"></button></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="band" id="levels"><div class="wrap">
+  <div class="eyebrow" data-i="lv_eb"></div>
+  <h2 data-i="lv_h"></h2>
+  <p class="lead" data-i="lv_p"></p>
+  <div class="tabs" id="lvtabs" role="group"></div>
+  <button class="plan" id="lvplan" type="button" aria-label="Zoom"><img id="lvimg" alt=""></button>
+  <div class="lvgrid" id="lvunits"></div>
+  <div class="legend" id="legend"></div>
+</div></section>
+
+<section id="amenities"><div class="wrap">
+  <div class="eyebrow" data-i="am_eb"></div>
+  <h2 data-i="am_h"></h2>
+  <div class="am" id="am"></div>
+  <div class="green"><big id="gpct"></big><div><p id="gtx"></p><div class="bar"><i id="gbar"></i></div></div></div>
+</div></section>
+
+<section id="gallery" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow" data-i="ga_eb"></div>
+  <h2 data-i="ga_h"></h2>
+  <div class="gal" id="gal"></div>
+  <p class="note" data-i="ga_note"></p>
+</div></section>
+
+<section class="band" id="location"><div class="wrap">
+  <div class="eyebrow" data-i="lo_eb"></div>
+  <h2 data-i="lo_h"></h2>
+  <p class="lead" data-i="lo_p"></p>
+  <div class="loc">
+    <div>
+      <div class="mapbox"><img src="img/map.jpg" alt="Map of Nakhleh, Koura"><i class="pin"></i><b class="pl">ESPACE NAKHLÉ</b><span class="at">© OpenStreetMap contributors</span></div>
+      <div class="coord"><span data-i="coords"></span><b id="coordv">34.3846° N, 35.8415° E</b><button class="cp" type="button" data-copy="34.3846, 35.8415" data-i="copy"></button></div>
+    </div>
+    <div><div class="eyebrow" data-i="drive_eb"></div><div class="drive" id="drive"></div><p class="note" style="color:var(--band-muted)" data-i="drive_note"></p></div>
+  </div>
+</div></section>
+
+<section id="payment"><div class="wrap">
+  <div class="eyebrow" data-i="pa_eb"></div>
+  <h2 data-i="pa_h"></h2>
+  <p class="lead" data-i="pa_p"></p>
+  <div class="pay3" id="pay3"></div>
+  <div class="seg"><div class="s1" style="width:20%"><b>20%</b><span data-i="seg1"></span></div><div class="s2" style="width:75%"><b>75%</b><span data-i="seg2"></span></div><div class="s3" style="width:5%"><b>5%</b></div></div>
+  <p class="note" data-i="pa_note"></p>
+  <div class="calc">
+    <div><label for="csel" data-i="calc_l"></label><select id="csel"></select><p class="small" style="margin-top:10px" data-i="calc_n"></p></div>
+    <div class="out" id="cout"></div>
+  </div>
+  <div class="stor"><h4 style="font-size:1.1rem;margin:.4rem 0 .6rem" data-i="st_h"></h4><table id="stor"></table><p class="note" data-i="st_n"></p></div>
+  <div class="valid"><b data-i="valid"></b><span data-i="valid2"></span></div>
+</div></section>
+
+<section id="specs" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow" data-i="sp_eb"></div>
+  <h2 data-i="sp_h"></h2>
+  <p class="lead" data-i="sp_p"></p>
+  <div id="specl" style="margin-top:2rem"></div>
+  <p class="note" data-i="sp_n"></p>
+</div></section>
+
+<section id="team" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow" data-i="tm_eb"></div>
+  <h2 data-i="tm_h"></h2>
+  <div class="team" id="teamb"></div>
+  <div class="name">
+    <div><div class="k" data-i="nm_eb"></div><h3>Espace Nakhlé</h3><p data-i="nm_p"></p></div>
+    <div><div class="k">Espace</div><p data-i="nm_1"></p><div class="k" style="margin-top:1rem">Nakhlé</div><p data-i="nm_2"></p></div>
+  </div>
+</div></section>
+
+<section class="band" id="contact"><div class="wrap contact">
+  <div>
+    <div class="eyebrow" data-i="co_eb"></div>
+    <h2 data-i="co_h"></h2>
+    <p class="lead" data-i="co_p"></p>
+    <div class="cta-row"><a class="btn solid" id="wa" href="https://wa.me/96170032800" target="_blank" rel="noopener" data-i="wa"></a><a class="btn" href="tel:+96170032800" data-i="call"></a></div>
+    <div class="credits"><div><span data-i="dev_by"></span><img src="img/Ardati_logo_white.png" alt="Ardati Development"></div><div><span data-i="arch_by"></span><img src="img/THA_logo_white.png" alt="THA"></div></div>
+  </div>
+  <div>
+    <div class="crow"><span data-i="co_who"></span><b>Saadi Ardati · Ardati Development</b><i></i></div>
+    <div class="crow"><span data-i="co_mob"></span><b>+961 70 032 800</b><button class="cp" type="button" data-copy="+961 70 032 800" data-i="copy"></button></div>
+    <div class="crow"><span data-i="co_mail"></span><b>info@ardatiprime.com</b><button class="cp" type="button" data-copy="info@ardatiprime.com" data-i="copy"></button></div>
+    <div class="crow"><span>Instagram</span><b>@ardati_prime</b><button class="cp" type="button" data-copy="@ardati_prime" data-i="copy"></button></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="tag">WE BUILD HORIZONS</div>
+  <p id="disc"></p>
+  <p data-i="foot1"></p>
+</div></footer>
+
+<div class="ov" id="ov" aria-modal="true" role="dialog"><div class="md" id="md"></div></div>
+<div class="lb" id="lb"><img alt=""></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA={"units": [{"id": "A-OUG-A", "b": "A", "l": "OUG", "t": "1BR", "bua": 84, "g": 27, "p": 75000, "d": 15000, "n": 52, "m": 1082, "f": 3750, "img": "A-OUG-A", "feat": ["Master Bath", "Master Dressing", "Open Kitchen"], "bal": 1}, {"id": "A-OUG-B", "b": "A", "l": "OUG", "t": "2BR", "bua": 114, "g": 97, "p": 109500, "d": 21900, "n": 52, "m": 1579, "f": 5475, "img": "A-OUG-B", "feat": ["Master Bath", "Open Kitchen"], "bal": 1}, {"id": "A-OUG-C", "b": "A", "l": "OUG", "t": "2BR", "bua": 118, "g": 63, "p": 108500, "d": 21700, "n": 52, "m": 1565, "f": 5425, "img": "A-OUG-C", "feat": ["Master Bath"], "bal": 2}, {"id": "A-OUG-D", "b": "A", "l": "OUG", "t": "3BR", "bua": 159, "g": 98, "p": 139500, "d": 27900, "n": 52, "m": 2012, "f": 6975, "img": "A-OUG-D", "feat": ["Master Bath", "Master Dressing", "Maid Room"], "bal": 1}, {"id": "A-GF-A", "b": "A", "l": "GF", "t": "3BR", "bua": 159, "g": 0, "p": 127000, "d": 25400, "n": 52, "m": 1832, "f": 6350, "img": "A-GF-A", "feat": ["Master Bath", "Master Dressing", "Laundry"], "bal": 3}, {"id": "A-GF-B", "b": "A", "l": "GF", "t": "2BR", "bua": 118, "g": 0, "p": 100500, "d": 20100, "n": 52, "m": 1450, "f": 5025, "img": "A-GF-B", "feat": ["Master Bath"], "bal": 2}, {"id": "A-GF-C", "b": "A", "l": "GF", "t": "3BR", "bua": 145, "g": 0, "p": 123500, "d": 24700, "n": 52, "m": 1781, "f": 6175, "img": "A-GF-C", "feat": ["Master Bath", "Laundry"], "bal": 1}, {"id": "A-GF-D", "b": "A", "l": "GF", "t": "1BR", "bua": 79, "g": 0, "p": 67500, "d": 13500, "n": 52, "m": 974, "f": 3375, "img": "A-GF-D", "feat": ["Open Kitchen"], "bal": 1}, {"id": "A-1F-A", "b": "A", "l": "1F", "t": "3BR", "bua": 159, "g": 0, "p": 127000, "d": 25400, "n": 52, "m": 1832, "f": 6350, "img": "A-GF-A", "feat": ["Master Bath", "Master Dressing", "Laundry"], "bal": 3}, {"id": "A-1F-B", "b": "A", "l": "1F", "t": "2BR", "bua": 118, "g": 0, "p": 100500, "d": 20100, "n": 52, "m": 1450, "f": 5025, "img": "A-GF-B", "feat": ["Master Bath"], "bal": 2}, {"id": "A-1F-C", "b": "A", "l": "1F", "t": "3BR", "bua": 148, "g": 0, "p": 126000, "d": 25200, "n": 52, "m": 1817, "f": 6300, "img": "A-1F-C", "feat": ["Master Bath"], "bal": 2}, {"id": "A-1F-D", "b": "A", "l": "1F", "t": "2BR", "bua": 106, "g": 0, "p": 90500, "d": 18100, "n": 52, "m": 1305, "f": 4525, "img": "A-1F-D", "feat": ["Master Bath", "Open Kitchen"], "bal": 1}, {"id": "A-2F-A", "b": "A", "l": "2F", "t": "3BR", "bua": 166, "g": 0, "p": 132500, "d": 26500, "n": 52, "m": 1911, "f": 6625, "img": "A-2F-A", "feat": ["Master Bath", "Master Dressing", "Laundry", "Maid Room"], "bal": 3}, {"id": "A-2F-B", "b": "A", "l": "2F", "t": "2BR", "bua": 118, "g": 0, "p": 100500, "d": 20100, "n": 52, "m": 1450, "f": 5025, "img": "A-GF-B", "feat": ["Master Bath"], "bal": 2}, {"id": "A-2F-C", "b": "A", "l": "2F", "t": "3BR", "bua": 148, "g": 0, "p": 126000, "d": 25200, "n": 52, "m": 1817, "f": 6300, "img": "A-1F-C", "feat": ["Master Bath"], "bal": 2}, {"id": "A-2F-D", "b": "A", "l": "2F", "t": "2BR", "bua": 100, "g": 0, "p": 85000, "d": 17000, "n": 52, "m": 1226, "f": 4250, "img": "A-2F-D", "feat": ["Master Bath", "Open Kitchen"], "bal": 1}, {"id": "B-OUG-A", "b": "B", "l": "OUG", "t": "3BR", "bua": 149, "g": 97, "p": 139500, "d": 27900, "n": 46, "m": 2274, "f": 6975, "img": "B-OUG-A", "feat": ["Master Bath", "Master Dressing", "Laundry"], "bal": 1}, {"id": "B-OUG-B", "b": "B", "l": "OUG", "t": "3BR", "bua": 150, "g": 90, "p": 139000, "d": 27800, "n": 46, "m": 2266, "f": 6950, "img": "B-OUG-B", "feat": ["Master Bath"], "bal": 2}, {"id": "B-OUG-C", "b": "B", "l": "OUG", "t": "2BR", "bua": 120, "g": 56, "p": 109500, "d": 21900, "n": 46, "m": 1785, "f": 5475, "img": "B-OUG-C", "feat": ["Open Kitchen"], "bal": 0}, {"id": "B-GF-A", "b": "B", "l": "GF", "t": "3BR", "bua": 133, "g": 0, "p": 113500, "d": 22700, "n": 46, "m": 1851, "f": 5675, "img": "B-GF-A", "feat": ["Master Bath"], "bal": 1}, {"id": "B-GF-B", "b": "B", "l": "GF", "t": "2BR", "bua": 112, "g": 0, "p": 95500, "d": 19100, "n": 46, "m": 1557, "f": 4775, "img": "B-GF-B", "feat": ["Master Bath"], "bal": 2}, {"id": "B-GF-C", "b": "B", "l": "GF", "t": "3BR", "bua": 143, "g": 0, "p": 122000, "d": 24400, "n": 46, "m": 1989, "f": 6100, "img": "B-GF-C", "feat": ["Master Bath", "Master Dressing", "Laundry"], "bal": 1}, {"id": "B-GF-D", "b": "B", "l": "GF", "t": "1BR", "bua": 73, "g": 0, "p": 62500, "d": 12500, "n": 46, "m": 1019, "f": 3125, "img": "B-GF-D", "feat": ["Open Kitchen"], "bal": 0}, {"id": "B-1F-A", "b": "B", "l": "1F", "t": "3BR", "bua": 138, "g": 0, "p": 117500, "d": 23500, "n": 46, "m": 1916, "f": 5875, "img": "B-1F-A", "feat": ["Master Bath"], "bal": 2}, {"id": "B-1F-B", "b": "B", "l": "1F", "t": "2BR", "bua": 112, "g": 0, "p": 95500, "d": 19100, "n": 46, "m": 1557, "f": 4775, "img": "B-GF-B", "feat": ["Master Bath"], "bal": 2}, {"id": "B-1F-C", "b": "B", "l": "1F", "t": "3BR", "bua": 139, "g": 0, "p": 118500, "d": 23700, "n": 46, "m": 1932, "f": 5925, "img": "B-1F-C", "feat": ["Master Bath"], "bal": 2}, {"id": "B-1F-D", "b": "B", "l": "1F", "t": "2BR", "bua": 104, "g": 0, "p": 88500, "d": 17700, "n": 46, "m": 1443, "f": 4425, "img": "B-1F-D", "feat": ["Master Bath", "Open Kitchen"], "bal": 1}, {"id": "B-2F-A", "b": "B", "l": "2F", "t": "3BR", "bua": 138, "g": 0, "p": 117500, "d": 23500, "n": 46, "m": 1916, "f": 5875, "img": "B-1F-A", "feat": ["Master Bath"], "bal": 2}, {"id": "B-2F-B", "b": "B", "l": "2F", "t": "2BR", "bua": 112, "g": 0, "p": 95500, "d": 19100, "n": 46, "m": 1557, "f": 4775, "img": "B-GF-B", "feat": ["Master Bath"], "bal": 2}, {"id": "B-2F-C", "b": "B", "l": "2F", "t": "3BR", "bua": 139, "g": 0, "p": 118500, "d": 23700, "n": 46, "m": 1932, "f": 5925, "img": "B-1F-C", "feat": ["Master Bath"], "bal": 2}, {"id": "B-2F-D", "b": "B", "l": "2F", "t": "2BR", "bua": 104, "g": 0, "p": 88500, "d": 17700, "n": 46, "m": 1443, "f": 4425, "img": "B-1F-D", "feat": ["Master Bath", "Open Kitchen"], "bal": 1}, {"id": "C-OUG-A", "b": "C", "l": "OUG", "t": "3BR", "bua": 128, "g": 106, "p": 122500, "d": 24500, "n": 40, "m": 2297, "f": 6125, "img": "C-OUG-A", "feat": ["Master Bath"], "bal": 2}, {"id": "C-OUG-B", "b": "C", "l": "OUG", "t": "3BR", "bua": 169, "g": 149, "p": 154000, "d": 30800, "n": 40, "m": 2888, "f": 7700, "img": "C-OUG-B", "feat": ["Master Bath", "Master Dressing"], "bal": 3}, {"id": "C-GF-A", "b": "C", "l": "GF", "t": "3BR", "bua": 131, "g": 0, "p": 111500, "d": 22300, "n": 40, "m": 2091, "f": 5575, "img": "C-GF-A", "feat": ["Master Bath"], "bal": 3}, {"id": "C-GF-B", "b": "C", "l": "GF", "t": "3BR", "bua": 165, "g": 73, "p": 141000, "d": 28200, "n": 40, "m": 2644, "f": 7050, "img": "C-GF-B", "feat": ["Master Bath", "Master Dressing"], "bal": 3}, {"id": "C-1F-A", "b": "C", "l": "1F", "t": "3BR", "bua": 131, "g": 0, "p": 111500, "d": 22300, "n": 40, "m": 2091, "f": 5575, "img": "C-1F-A", "feat": ["Master Bath"], "bal": 3}, {"id": "C-1F-B", "b": "C", "l": "1F", "t": "3BR", "bua": 169, "g": 0, "p": 135000, "d": 27000, "n": 40, "m": 2531, "f": 6750, "img": "C-1F-B", "feat": ["Master Bath", "Master Dressing"], "bal": 3}, {"id": "C-2F-A", "b": "C", "l": "2F", "t": "3BR", "bua": 131, "g": 0, "p": 111500, "d": 22300, "n": 40, "m": 2091, "f": 5575, "img": "C-1F-A", "feat": ["Master Bath"], "bal": 3}, {"id": "C-2F-B", "b": "C", "l": "2F", "t": "3BR", "bua": 169, "g": 0, "p": 135000, "d": 27000, "n": 40, "m": 2531, "f": 6750, "img": "C-1F-B", "feat": ["Master Bath", "Master Dressing"], "bal": 3}], "months": {"A": {"n": 52, "en": "March 2031", "ar": "آذار 2031"}, "B": {"n": 46, "en": "September 2030", "ar": "أيلول 2030"}, "C": {"n": 40, "en": "March 2030", "ar": "آذار 2030"}}, "land": 3328, "gtot": 856, "gpct": 25.721153846153843, "specs": [{"h": {"en": "Plumbing", "ar": "السباكة"}, "i": [{"en": "<b>Drainage:</b> REDI (Italy) PVC sanitary system", "ar": "<b>الصرف:</b> شبكة صرف صحي PVC من REDI (إيطاليا)"}, {"en": "<b>Water supply:</b> API (Lebanon) PPR pipes", "ar": "<b>تمديدات المياه:</b> أنابيب PPR من API (لبنان)"}, {"en": "<b>Fittings:</b> GROHE (Germany) mixers and basins, or equivalent", "ar": "<b>التجهيزات:</b> خلاطات وأحواض من GROHE (ألمانيا) أو ما يعادلها"}, {"en": "<b>WC:</b> concealed GROHE cistern or equivalent", "ar": "<b>المرحاض:</b> خزان مخفي من GROHE أو ما يعادله"}, {"en": "Separate water distribution for each apartment", "ar": "شبكة مياه منفصلة لكل شقة"}, {"en": "Heating (chauffage) piping available on request, at extra cost", "ar": "تمديدات التدفئة (الشوفاج) متوفرة عند الطلب بكلفة إضافية"}]}, {"h": {"en": "Electrical", "ar": "الكهرباء"}, "i": [{"en": "<b>Switches &amp; sockets:</b> LEGRAND (France) or equivalent", "ar": "<b>المفاتيح والمقابس:</b> LEGRAND (فرنسا) أو ما يعادلها"}, {"en": "<b>Distribution board:</b> GEWISS (Italy) or equivalent", "ar": "<b>لوحة التوزيع:</b> GEWISS (إيطاليا) أو ما يعادلها"}, {"en": "<b>Cables:</b> copper, Cables Liban; 6 mm main, 2.5 mm walls, 1.5 mm ceilings", "ar": "<b>الأسلاك:</b> نحاس من Cables Liban؛ 6 مم للخط الرئيسي، 2.5 مم للجدران، 1.5 مم للأسقف"}, {"en": "Full earthing and RCCB protection in each board", "ar": "تأريض كامل وحماية RCCB في كل لوحة"}, {"en": "Pre-wired phone, internet and satellite in salon and main rooms", "ar": "تجهيز مسبق للهاتف والإنترنت والستالايت في الصالون والغرف الرئيسية"}, {"en": "Electrical room prepared for inverter and batteries in every apartment", "ar": "غرفة كهرباء مجهّزة لتركيب الإنفرتر والبطاريات في كل شقة"}]}, {"h": {"en": "Walls &amp; Paint", "ar": "الجدران والدهان"}, "i": [{"en": "Double external walls, plastered inside and out", "ar": "جدران خارجية مزدوجة، مطيّنة من الداخل والخارج"}, {"en": "Waterproofing additive (SPR + fibre) in the plaster mix", "ar": "مادة عازلة للماء (SPR + ألياف) مضافة إلى خلطة البياض"}, {"en": "<b>\"Happy Wall\" 10-stage finish:</b> surface preparation, sealer, three-coat putty, insulating undercoat, sanding, two semi-matt coats and a final super-caoutchouc coat", "ar": "<b>تشطيب \"Happy Wall\" بعشر مراحل:</b> تحضير السطح، دهان أساس، معجون بثلاث طبقات، طبقة عازلة، تجليخ، طبقتان نصف لامعتان، وطبقة نهائية سوبر كاوتشوك"}]}, {"h": {"en": "Air Conditioning &amp; Security", "ar": "التكييف والأمان"}, "i": [{"en": "Provision for AC in every room and the salon", "ar": "تجهيز لتكييف الهواء في كل غرفة وفي الصالون"}, {"en": "Copper, electrical and drainage lines run per unit, all concealed", "ar": "خطوط النحاس والكهرباء والصرف لكل وحدة، مخفية بالكامل"}, {"en": "Video-intercom linking each apartment to the building entrance", "ar": "نظام فيديو إنتركوم يربط كل شقة بمدخل المبنى"}]}, {"h": {"en": "Ceilings &amp; Joinery", "ar": "الأسقف والنجارة"}, "i": [{"en": "Smooth gypsum board ceilings in salons and entrance; PVC finish in bathrooms", "ar": "أسقف جبس بورد ناعمة في الصالونات والمدخل، وتشطيب PVC في الحمامات"}, {"en": "<b>Kitchens:</b> melamine units, soft-close hydraulic hinges and runners, quartz or marble worktop of your choice", "ar": "<b>المطابخ:</b> وحدات ميلامين، مفصلات ومجارٍ هيدروليكية بإغلاق هادئ، وسطح عمل كوارتز أو رخام بحسب اختيارك"}, {"en": "<b>Doors:</b> 240 cm high, moisture-resistant MDF frame, honeycomb core, Swedish veneer finish", "ar": "<b>الأبواب:</b> بارتفاع 240 سم، إطار MDF مقاوم للرطوبة، حشوة قرص العسل، وتكسية قشرة سويدية"}]}, {"h": {"en": "Aluminium", "ar": "الألمنيوم"}, "i": [{"en": "Lebanese 2000-series profiles", "ar": "قطاعات لبنانية من سلسلة 2000"}, {"en": "FOLDA accessories", "ar": "إكسسوارات FOLDA"}, {"en": "Double glazing with fumé tint for thermal and acoustic insulation", "ar": "زجاج مزدوج بلون دخاني (Fumé) للعزل الحراري والصوتي"}, {"en": "Monoblock shutters in all rooms", "ar": "شتر مونوبلوك في جميع الغرف"}]}, {"h": {"en": "Tiling", "ar": "التبليط"}, "i": [{"en": "Class A high-grade porcelain in all rooms and salons", "ar": "بورسلان من الفئة A عالي الجودة في جميع الغرف والصالونات"}, {"en": "Large-format tiles; concealed skirting in salons", "ar": "بلاط كبير القياس، مع زوايا (نعل) مخفية في الصالونات"}, {"en": "Cement waterproofing of floors before tiling, tested to prevent future leaks", "ar": "عزل الأرضيات بالإسمنت المائي قبل التبليط، مع فحص لمنع أي تسرّب مستقبلي"}, {"en": "Bathrooms individually designed; colours and models chosen by the buyer", "ar": "تصميم كل حمام على حدة؛ والألوان والموديلات بحسب اختيار المشتري"}]}, {"h": {"en": "Structure", "ar": "الهيكل الإنشائي"}, "i": [{"en": "<b>Steel:</b> Ezz Dekheila (Egypt)", "ar": "<b>الحديد:</b> عز الدخيلة (مصر)"}, {"en": "<b>Cement:</b> 8 bags per cubic metre of concrete", "ar": "<b>الإسمنت:</b> 8 أكياس لكل متر مكعب من الباطون"}, {"en": "Steel and cement tested at the University of Balamand laboratory for quality and strength", "ar": "فحص الحديد والإسمنت في مختبر جامعة البلمند للتأكد من الجودة والمتانة"}]}, {"h": {"en": "Access &amp; Parking", "ar": "المداخل والمواقف"}, "i": [{"en": "Dedicated parking space for every apartment", "ar": "موقف سيارة مخصص لكل شقة"}, {"en": "Automatic doors and Italian-motor lifts", "ar": "أبواب أوتوماتيكية ومصاعد بمحرّك إيطالي"}, {"en": "Interlock or basalt paving for parking and entrances", "ar": "تبليط إنترلوك أو بازلت للمواقف والمداخل"}, {"en": "Automatic garage gate with remote control", "ar": "بوابة كراج أوتوماتيكية بجهاز تحكم عن بُعد"}, {"en": "Private gardens for selected units", "ar": "حدائق خاصة لوحدات مختارة"}]}, {"h": {"en": "Envelope", "ar": "الغلاف الخارجي"}, "i": [{"en": "Advanced waterproofing and moisture insulation on roofs and walls", "ar": "عزل متطور للمياه والرطوبة على الأسطح والجدران"}, {"en": "Roof protected from climate through integrated thermal and waterproof layers", "ar": "حماية الأسطح من العوامل المناخية عبر طبقات عزل حراري ومائي متكاملة"}, {"en": "Modern acoustic insulation inside each unit", "ar": "عزل صوتي حديث داخل كل وحدة"}, {"en": "Facade in natural stone or decorative ceramic, in keeping with the building’s classic character", "ar": "واجهات بالحجر الطبيعي أو السيراميك الزخرفي بما يتناسب مع الطابع الكلاسيكي للمبنى"}, {"en": "High-grade exterior paint resisting moisture, radiation and cracking", "ar": "دهان خارجي عالي الجودة مقاوم للرطوبة والإشعاع والتشقق"}]}, {"h": {"en": "Site &amp; Services", "ar": "الموقع والخدمات"}, "i": [{"en": "Direct engineered connection to the public sewage network to municipal standard", "ar": "ربط هندسي مباشر بشبكة الصرف الصحي العامة وفق المعايير البلدية"}, {"en": "Concealed drainage filters in the ground, preventing pooling without affecting the finished surface", "ar": "مصافي صرف مخفية في الأرض لمنع تجمّع المياه من دون التأثير على المظهر النهائي"}, {"en": "Integrated boundary wall combining elegance and security, with green planting", "ar": "سور خارجي متكامل يجمع بين الأناقة والأمان، مع نباتات خضراء"}, {"en": "Illuminated entrances combining precise geometric layout with aesthetic lighting", "ar": "مداخل مضاءة تجمع بين التوزيع الهندسي الدقيق ولمسات الإضاءة الجمالية"}]}], "feat": {"Master Bath": ["Master bedroom with en-suite bath", "غرفة نوم رئيسية مع حمام داخلي"], "Master Dressing": ["Dressing room", "غرفة ملابس"], "Laundry": ["Laundry room", "غرفة غسيل"], "Maid Room": ["Maid's room", "غرفة خادمة"], "Open Kitchen": ["Open kitchen", "مطبخ مفتوح"]}, "disc": ["Apartments are sold unfurnished. Furniture, appliances and decor shown in plans and images are for illustration only and are not included in the sale.", "تُباع الشقق غير مفروشة. الأثاث والأجهزة والديكور الظاهرة في المخططات والصور هي لأغراض التوضيح فقط وغير مشمولة في البيع."], "storage": [{"id": "A-OUG-S1", "sqm": 4, "p": 2000, "d": 400, "m": 29, "f": 100}, {"id": "A-OUG-S2", "sqm": 4, "p": 2000, "d": 400, "m": 29, "f": 100}, {"id": "A-OUG-S3", "sqm": 4, "p": 2000, "d": 400, "m": 29, "f": 100}, {"id": "A-OUG-S4", "sqm": 6.5, "p": 3500, "d": 700, "m": 50, "f": 175}]};
+const LANGKEY='nk-lang';
+const LV={OUG:['Open Underground','الطابق السفلي المفتوح'],GF:['Ground Floor','الطابق الأرضي'],'1F':['First Floor','الطابق الأول'],'2F':['Second Floor','الطابق الثاني']};
+const TY={'1BR':['1 Bedroom','غرفة نوم واحدة'],'2BR':['2 Bedrooms','غرفتا نوم'],'3BR':['3 Bedrooms','ثلاث غرف نوم']};
+const TYN={'1BR':['1 bedroom','غرفة نوم'],'2BR':['2 bedrooms','غرفتان'],'3BR':['3 bedrooms','3 غرف']};
+const I={
+en:{tag:'WE BUILD HORIZONS',hero_sub:'Thirty-nine residences in three blocks, set among the olive groves of North Lebanon.',cta_explore:'Explore residences',cta_contact:'Contact sales',
+ nav:['Residences','Levels','Amenities','Location','Payment','Specifications','Contact'],
+ dev_eb:'THE DEVELOPMENT',dev_h:'Three blocks. Thirty-nine residences.',dev_p:'Thirty-nine apartments in Nakhleh, Koura, from a compact 73 sqm one-bedroom to a three-bedroom of up to 169 sqm. Ten residences open directly onto private gardens, the largest of 149 sqm.',
+ facts:[['39','Residences','In three blocks of four levels'],['73–169','sqm built-up','One to three bedrooms'],['10','Garden residences','Private gardens of 27–149 sqm'],['25%+','Green space','Private gardens across the 3,328 sqm site'],['3','Blocks','A · B · C'],['1:1','Parking','A dedicated space for every apartment']],
+ res_eb:'THE RESIDENCES',res_h:'A home for every household',res_p:'Choose the number of bedrooms and the residences that match appear below. Select any residence for its 3D view, floor plan and payment schedule.',
+ f_type:'Bedrooms',f_block:'Block',f_level:'Level',f_garden:'Garden',f_sort:'Sort',all:'All',garden_only:'With private garden',s_def:'Block, level, unit',s_pl:'Price, low to high',s_ph:'Price, high to low',s_al:'Area, small to large',s_ah:'Area, large to small',reset:'Clear filters',
+ n1:'residence',nn:'residences',none:'No residence matches these filters. Clear a filter to see more.',from:'Price',sqm:'sqm',garden:'Garden',
+ lv_eb:'FLOOR PLANS BY LEVEL',lv_h:'Four levels, three blocks',lv_p:'Select a residence below the plan to open it. Tap the plan to enlarge it.',lv_note:'Parking plateau, gardens, gym and storage rooms. Open Underground residences open directly onto their gardens.',
+ lvd:{OUG:'Parking plateau, gardens, gym and storage rooms. Open Underground residences open directly onto their gardens.',GF:'Three blocks at street-facing level, with private entrances and landscaped surroundings.','1F':'Typical residential level across Blocks A, B and C.','2F':'Top residential level across Blocks A, B and C. Apartment layouts differ from the First Floor.'},
+ block:'Block',
+ am_eb:'AMENITIES & LIFESTYLE',am_h:'Designed around everyday living',
+ am:[['park','Parking for every apartment','A dedicated parking space for each apartment.'],['gate','Gated project','Enclosed by a landscaped boundary wall.'],['conc','Concierge','A concierge service for residents.'],['stor','Storage rooms','A few storage rooms in Block A.'],['room','Gym','A fitness room for residents within the development.'],['tree','Landscaping','Landscaped grounds and 10 private gardens.']],
+ gtx:'Green space. 10 private gardens, c. 856 sqm: more than 25% of the 3,328 sqm site.',
+ ga_eb:'GALLERY',ga_h:'The project as designed',ga_note:'Artist’s impressions. First draft design. Indicative only.',
+ lo_eb:'LOCATION',lo_h:'Everything you need, minutes away.',lo_p:'Espace Nakhlé sits in Nakhleh, Koura, close to schools, healthcare and the area’s main destinations.',coords:'Coordinates',copy:'Copy',drive_eb:'APPROXIMATE DRIVE TIME FROM THE SITE',drive_note:'Drive times are approximate.',min:'min',
+ places:['Saint Refqa','David Karam Educational Center','Haykal Hospital','Palma Beach Resort','North Saray','Kousba roundabout'],
+ pa_eb:'PAYMENT PLANS & DELIVERY',pa_h:'Simple, staged and predictable',pa_p:'A 20% down-payment, equal monthly instalments for 75%, and a final 5% at handover. Delivery follows the final payment of each block. November 2026 is Month 0.',
+ mi:'monthly instalments',fin:'Final payment and handover',startfrom:'Starting from',seg1:'Down-payment',seg2:'Equal monthly instalments',pa_note:'Prices are in US dollars.',
+ calc_l:'Choose a residence',calc_n:'Figures follow the approved price list of November 2026.',c_price:'Price',c_down:'Down-payment (20%)',c_inst:'Monthly instalments (75%)',c_last:'Final payment (5%)',c_at:'at handover',c_x:'instalments of',
+ st_h:'Storage rooms · Block A · Open Underground',st_n:'A limited number of storage rooms follow the Block A payment plan: 20% down-payment, 52 equal monthly instalments and a final payment in March 2031.',st_cols:['Room','sqm','Price USD','Down-payment','Monthly','Final'],
+ valid:'Prices and payment plans are valid until 31 December 2026.',valid2:'Contact the sales team to reserve your residence.',
+ sp_eb:'SPECIFICATIONS',sp_h:'Built to last, finished with care.',sp_p:'The full specification, from structure to finishes.',sp_n:'Specifications are indicative. Brands are as stated or equivalent. Some provisions apply only to selected units. Final finishes are as agreed in the sale contract.',
+ tm_eb:'THE TEAM',tm_h:'Built by people who build here.',
+ dev_role:'Developer',arch_role:'Architect',sel:'Selected projects',sold:'Sold out',
+ dev_q:'Turning vision into reality. Building with purpose.',dev_t:'Ardati Development is a development and construction company driven by a passion for creating quality homes, from the early stages of construction to the finishing details, with a focus on craftsmanship and quality of execution.',
+ arch_q:'Architecture rooted in place. Designed for contemporary living.',arch_t:'Led by architect Talal El Hassan, THA is a North Lebanon practice creating contemporary spaces that respond to their surroundings and users, across residential, commercial and institutional work.',
+ nm_eb:'THE NAME',nm_p:'We are not just offering apartments. We are offering a better sense of space, and a different quality of everyday living.',nm_1:'Space to breathe. Openness, breathing room, natural light and open views.',nm_2:'A sense of place. Nakhlé gives the project its local identity and ties it to its location in Nakhleh, Koura.',
+ co_eb:'SALES ENQUIRIES',co_h:'Reserve your residence',co_p:'Speak to the sales team about availability, viewings and the payment plan that suits you.',wa:'WhatsApp',enq:'Enquire',call:'Call',co_who:'Contact',co_mob:'Mobile & WhatsApp',co_mail:'Email',dev_by:'DEVELOPED BY',arch_by:'ARCHITECTURE BY',
+ foot1:'Espace Nakhlé · Nakhleh, Koura, North Lebanon. Renders, plans and specifications are indicative and subject to the sale contract. Prices and payment terms are valid until 31 December 2026.',
+ d3:'3D view',d2:'Floor plan',price:'Price',down:'Down-payment',monthly:'Monthly',finalp:'Final payment',bua:'Built-up area',gard:'Private garden',deliv:'Handover',same:'Same layout and finishes on',close:'Close',prev:'Previous',next:'Next',pstruct:'Payment plan',copied:'Copied',nocopy:'Select the text to copy it',valid_s:'Prices valid until 31 December 2026',
+ inst:'instalments',bal1:'1 balcony',balN:'balconies'},
+ar:{tag:'WE BUILD HORIZONS',hero_sub:'تسع وثلاثون شقة في ثلاث بنايات، وسط بساتين الزيتون في شمال لبنان.',cta_explore:'استعرض الشقق',cta_contact:'تواصل مع المبيعات',
+ nav:['الشقق','الطوابق','المرافق','الموقع','الدفع','المواصفات','التواصل'],
+ dev_eb:'المشروع',dev_h:'ثلاث بنايات. تسع وثلاثون شقة.',dev_p:'تسع وثلاثون شقة في النخلة، الكورة، من غرفة نوم مدمجة بمساحة 73 م² إلى ثلاث غرف نوم بمساحة تصل إلى 169 م². عشر شقق تفتح مباشرة على حدائق خاصة، أكبرها 149 م².',
+ facts:[['39','شقة سكنية','في ثلاث بنايات من أربعة طوابق'],['73–169','م² مساحة بناء','من غرفة نوم إلى ثلاث غرف'],['10','شقق بحدائق خاصة','حدائق خاصة بمساحة 27–149 م²'],['+25%','مساحات خضراء','حدائق خاصة على أرض مساحتها 3,328 م²'],['3','بنايات','A · B · C'],['1:1','مواقف السيارات','موقف مخصص لكل شقة']],
+ res_eb:'الشقق',res_h:'منزل لكل أسرة',res_p:'اختر عدد غرف النوم لتظهر الشقق المناسبة أدناه. اضغط على أي شقة لعرض المنظور ثلاثي الأبعاد والمخطط وجدول الدفع.',
+ f_type:'غرف النوم',f_block:'البناية',f_level:'الطابق',f_garden:'الحديقة',f_sort:'الترتيب',all:'الكل',garden_only:'بحديقة خاصة',s_def:'البناية، الطابق، الشقة',s_pl:'السعر من الأقل إلى الأعلى',s_ph:'السعر من الأعلى إلى الأقل',s_al:'المساحة من الأصغر إلى الأكبر',s_ah:'المساحة من الأكبر إلى الأصغر',reset:'مسح الفلاتر',
+ n1:'شقة',nn:'شقة',none:'لا توجد شقة تطابق هذه الفلاتر. أزل أحد الفلاتر لعرض المزيد.',from:'السعر',sqm:'م²',garden:'حديقة',
+ lv_eb:'مخططات الطوابق',lv_h:'أربعة طوابق، وثلاث بنايات',lv_p:'اختر شقة أسفل المخطط لفتحها. اضغط على المخطط لتكبيره.',
+ lvd:{OUG:'مستوى المواقف والحدائق ونادٍ رياضي وغرف التخزين. وتُفتح شقق الطابق السفلي المفتوح مباشرة على حدائقها.',GF:'ثلاث بنايات على مستوى الشارع، بمداخل خاصة ومحيط مُشجَّر.','1F':'طابق سكني نموذجي في البنايات A وB وC.','2F':'الطابق السكني الأعلى في البنايات A وB وC. وتختلف تصاميم الشقق عن الطابق الأول.'},
+ block:'البناية',
+ am_eb:'المرافق ونمط الحياة',am_h:'مصمّم حول حياتك اليومية',
+ am:[['park','موقف لكل شقة','موقف سيارة مخصص لكل شقة.'],['gate','مشروع مسوّر','يحيط به سور خارجي تتخلله النباتات.'],['conc','خدمة الكونسيرج','خدمة كونسيرج لسكان المشروع.'],['stor','غرف تخزين','غرف تخزين محدودة في البناية A.'],['room','نادٍ رياضي','نادٍ رياضي لسكان المشروع داخل المشروع.'],['tree','تنسيق المساحات الخضراء','مساحات مُنسَّقة و10 حدائق خاصة.']],
+ gtx:'مساحات خضراء. 10 حدائق خاصة بنحو 856 م²، أي أكثر من 25% من مساحة الأرض البالغة 3,328 م².',
+ ga_eb:'المعرض',ga_h:'المشروع كما صُمِّم',ga_note:'تصوّر فنّي. مسودة تصميم أولى. استرشادي فقط.',
+ lo_eb:'الموقع',lo_h:'كل ما تحتاجه، على بُعد دقائق.',lo_p:'يقع Espace Nakhlé في النخلة، الكورة، قريباً من المدارس والرعاية الصحية وأبرز وجهات المنطقة.',coords:'الإحداثيات',copy:'نسخ',drive_eb:'أوقات القيادة التقريبية من الموقع',drive_note:'أوقات القيادة تقريبية.',min:'د',
+ places:['القدّيسة رفقا (المزار)','مركز ديفيد كرم التربوي','مستشفى هيكل','منتجع البالما','السرايا','دوّار كوسبا'],
+ pa_eb:'خطط الدفع والتسليم',pa_h:'تقسيط مريح يناسب خططك',pa_p:'دفعة أولى 20%، وأقساط شهرية متساوية بنسبة 75%، ودفعة أخيرة 5% عند التسليم. يتزامن التسليم مع الدفعة الأخيرة لكل بناية. ويُعدّ تشرين الثاني 2026 الشهر 0.',
+ mi:'دفعة شهرية',fin:'الدفعة الأخيرة والتسليم',startfrom:'ابتداءً من',seg1:'دفعة أولى',seg2:'دفعات شهرية متساوية',pa_note:'الأسعار بالدولار الأميركي.',
+ calc_l:'اختر شقة',calc_n:'الأرقام وفق قائمة الأسعار المعتمدة لشهر تشرين الثاني 2026.',c_price:'السعر',c_down:'الدفعة الأولى (20%)',c_inst:'الأقساط الشهرية (75%)',c_last:'الدفعة الأخيرة (5%)',c_at:'عند التسليم',c_x:'قسطاً بقيمة',
+ st_h:'غرف التخزين · البناية A · الطابق السفلي المفتوح',st_n:'عدد محدود من غرف التخزين يتبع خطة دفع البناية A: دفعة أولى 20%، و52 قسطاً شهرياً متساوياً، ودفعة أخيرة في آذار 2031.',st_cols:['الغرفة','م²','السعر USD','الدفعة الأولى','شهرياً','الأخيرة'],
+ valid:'الأسعار وخطط الدفع سارية حتى 31 كانون الأول 2026.',valid2:'تواصل مع فريق المبيعات لحجز شقتك.',
+ sp_eb:'المواصفات',sp_h:'بُني ليدوم، ومشطّب بعناية.',sp_p:'المواصفات الكاملة، من الهيكل إلى التشطيبات.',sp_n:'المواصفات تقريبية. العلامات التجارية كما هو مذكور أو ما يعادلها. بعض البنود تنطبق على وحدات مختارة فقط. التشطيبات النهائية وفق ما يُتفق عليه في عقد البيع.',
+ tm_eb:'فريق العمل',tm_h:'يبنيه أناس يبنون هنا.',
+ dev_role:'المطوّر',arch_role:'المعماري',sel:'مشاريع مختارة',sold:'نفدت الوحدات',
+ dev_q:'نحوّل الرؤية إلى واقع. نبني بهدف.',dev_t:'Ardati Development شركة تطوير ومقاولات يحرّكها الشغف ببناء مساكن عالية الجودة، من مراحل البناء الأولى إلى تفاصيل التشطيب، مع تركيز على الإتقان وجودة التنفيذ.',
+ arch_q:'عمارة متجذّرة في المكان. مصمّمة للحياة المعاصرة.',arch_t:'بقيادة المهندس المعماري طلال الحسن، THA مكتب في شمال لبنان يبتكر مساحات معاصرة تستجيب لمحيطها ولمستخدميها، في أعمال سكنية وتجارية ومؤسسية.',
+ nm_eb:'الاسم',nm_p:'نحن لا نعرض شققاً فحسب؛ بل نقدّم إحساساً أرحب بالمساحة، ونوعية مختلفة من العيش اليومي.',nm_1:'مساحة للتنفّس. الانفتاح، والرحابة، والضوء الطبيعي، والإطلالات المفتوحة.',nm_2:'هوية المكان. تمنح Nakhlé المشروع هويته المحلية وتربطه بموقعه في النخلة، الكورة.',
+ co_eb:'للاستفسار والمبيعات',co_h:'احجز شقتك',co_p:'تحدّث إلى فريق المبيعات عن التوفّر والمعاينة وخطة الدفع التي تناسبك.',wa:'واتساب',enq:'استفسار',call:'اتصال',co_who:'التواصل',co_mob:'موبايل وواتساب',co_mail:'البريد الإلكتروني',dev_by:'تطوير',arch_by:'تصميم معماري',
+ foot1:'Espace Nakhlé · النخلة، الكورة، شمال لبنان. الصور التخيّلية والمخططات والمواصفات تقريبية وتخضع لعقد البيع. الأسعار وشروط الدفع سارية حتى 31 كانون الأول 2026.',
+ d3:'منظور ثلاثي الأبعاد',d2:'المخطط',price:'السعر',down:'الدفعة الأولى',monthly:'شهرياً',finalp:'الدفعة الأخيرة',bua:'مساحة البناء',gard:'الحديقة الخاصة',deliv:'التسليم',same:'التصميم والتشطيبات نفسها في',close:'إغلاق',prev:'السابق',next:'التالي',pstruct:'خطة الدفع',copied:'تم النسخ',nocopy:'حدّد النص لنسخه',valid_s:'الأسعار سارية حتى 31 كانون الأول 2026',
+ inst:'دفعة',bal1:'شرفة واحدة',balN:'شرفات'}
+};
+const PLACE_MIN=[3,3,8,12,13,14];
+const ICONS={park:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9.5 17V7h3.2a3 3 0 0 1 0 6H9.5"/></svg>',gate:'<svg viewBox="0 0 24 24"><path d="M3 20V7M21 20V7M3 7h18M7 7v13M12 7v13M17 7v13"/></svg>',conc:'<svg viewBox="0 0 24 24"><path d="M4 17h16M6 17a6 6 0 0 1 12 0M12 7V5M10 5h4"/></svg>',stor:'<svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v10l-8 3-8-3z M4 8l8 3 8-3 M12 11v10"/></svg>',room:'<svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><path d="M3 18c0-3 2.4-5 5-5s5 2 5 5M11 18c0-3 2.4-5 5-5s5 2 5 5"/></svg>',tree:'<svg viewBox="0 0 24 24"><path d="M12 21v-6M12 15c-4 0-6-3-5-6 0-3 3-5 5-5s5 2 5 5c1 3-1 6-5 6z"/></svg>'};
+const GAL=['im-000','im-002','im-005','im-006','im-011','im-022','im-021','im-023','im-025','im-007','im-008','im-009','im-010'];
+const PROJ_D=[['th0','Daisy Barsa',1],['th1','Dhalia',0],['th2','Aurea',0],['th3','Ola Residence',0],['th4','Rami 25',0],['th5','Luna Center',1],['th6','Ola Residence 2',1],['th7','Rasmaska Garden',0]];
+const PROJ_A=[['tha0','Ramleh 1577'],['tha1','The Plex'],['tha2','Rmeil 662'],['tha3','Ayla'],['tha4','Balamand Hills 04']];
+
+let lang='en';try{lang=localStorage.getItem(LANGKEY)||((navigator.language||'').startsWith('ar')?'ar':'en')}catch(e){lang=((navigator.language||'').startsWith('ar')?'ar':'en')}
+const st={type:'all',block:'all',lvl:'all',garden:false,sort:'def',level:'OUG',view:'3d',cur:null};
+const $=s=>document.querySelector(s);
+const T=k=>I[lang][k];
+const L=i=>lang==='ar'?1:0;
+const usd=n=>'USD '+Math.round(n).toLocaleString('en-US');
+const U=DATA.units, byId=Object.fromEntries(U.map(u=>[u.id,u]));
+const tn=n=>n.toLocaleString('en-US');
+const dd=b=>DATA.months[b][lang];
+function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1600)}
+
+function applyStatic(){
+  document.querySelectorAll('[data-i]').forEach(e=>{const v=I[lang][e.dataset.i];if(typeof v==='string')e.textContent=v});
+  $('#nav').innerHTML=['residences','levels','amenities','location','payment','specs','contact'].map((id,i)=>`<a href="#${id}" data-go="${id}">${T('nav')[i]}</a>`).join('');
+  $('#lang').textContent=lang==='en'?'العربية':'English';
+  $('#facts').innerHTML=T('facts').map(f=>`<div class="fact"><b>${f[0]}</b><div><strong style="font-weight:500;font-size:.85rem">${f[1]}</strong></div><span>${f[2]}</span></div>`).join('');
+  $('#am').innerHTML=T('am').map(a=>`<div>${ICONS[a[0]]}<h4>${a[1]}</h4><p>${a[2]}</p></div>`).join('');
+  $('#gpct').textContent=lang==='ar'?'+25%':'25%+';$('#gtx').textContent=T('gtx');$('#gbar').style.width=DATA.gpct.toFixed(1)+'%';
+  $('#drive').innerHTML=T('places').map((p,i)=>`<div class="r"><span>${p}</span><b>${PLACE_MIN[i]} ${T('min')}</b><div class="tr"><i style="width:${PLACE_MIN[i]/15*100}%"></i></div></div>`).join('');
+  $('#disc').textContent=DATA.disc[L()];
+  $('#gal').innerHTML=GAL.map((g,i)=>`<button type="button" data-lb="img/${g}.jpg" aria-label="Image ${i+1}"><img src="img/${g}_t.jpg" alt=""></button>`).join('');
+  $('#specl').innerHTML=DATA.specs.map(s=>`<details><summary>${s.h[lang]}</summary><ul>${s.i.map(x=>`<li>${x[lang]}</li>`).join('')}</ul></details>`).join('');
+  const dsold=PROJ_D.map(p=>`<figure><img src="img/${p[0]}.jpg" alt=""><figcaption>${p[1]}${p[2]?' · '+T('sold'):''}</figcaption></figure>`).join('');
+  const asel=PROJ_A.map(p=>`<figure><img src="img/${p[0]}.jpg" alt=""><figcaption>${p[1]}</figcaption></figure>`).join('');
+  $('#teamb').innerHTML=`<div class="tp dk"><img class="lg" src="img/Ardati_logo_white.png" alt="Ardati Development"><div class="role">${T('dev_role')}</div><q>${T('dev_q')}</q><p>${T('dev_t')}</p><div class="role" style="margin-bottom:8px">${T('sel')}</div><div class="ths">${dsold}</div></div>
+   <div class="tp"><img class="lg logo-l" src="img/THA_logo_dark.png" alt="THA"><img class="lg logo-d" src="img/THA_logo_white.png" alt="THA"><div class="role">${T('arch_role')}</div><q>${T('arch_q')}</q><p>${T('arch_t')}</p><div class="role" style="margin-bottom:8px">${T('sel')}</div><div class="ths">${asel}</div></div>`;
+  $('#pay3').innerHTML=['A','B','C'].map(b=>{const n=DATA.months[b].n;const rows=['1BR','2BR','3BR'].map(k=>{const l=U.filter(u=>u.b===b&&u.t===k);return l.length?`<div><span>${TY[k][L()]}</span><b>${usd(Math.min(...l.map(u=>u.p)))}</b></div>`:''}).join('');
+    return `<div class="pcard"><div class="bn">${T('block')} ${b}</div><div class="mm">${n}</div><div class="ml">${T('mi')}</div><div class="dl">${T('fin')}<b>${dd(b)}</b></div><div class="fr"><span class="small">${T('startfrom')}</span>${rows}</div></div>`}).join('');
+  $('#stor').innerHTML=`<thead><tr>${T('st_cols').map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${DATA.storage.map(s=>`<tr><td><b dir="ltr">${s.id}</b></td><td>${s.sqm}</td><td>${tn(s.p)}</td><td>${tn(s.d)}</td><td>52 × ${s.m}</td><td>${tn(s.f)}</td></tr>`).join('')}</tbody>`;
+  const cs=$('#csel'),cv=cs.value||U[0].id;cs.innerHTML=U.map(u=>`<option value="${u.id}">${u.id} · ${TYN[u.t][L()]} · ${u.bua} ${T('sqm')}</option>`).join('');cs.value=cv;
+  renderCalc();
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  renderFilters();renderGrid();renderLevels();
+  if(st.cur)renderModal();
+}
+function chip(group,val,label){return `<button class="chip" type="button" data-f="${group}" data-v="${val}" aria-pressed="${String(st[group]===val)}">${label}</button>`}
+function renderFilters(){
+  const ty=[['all',T('all')],...['1BR','2BR','3BR'].map(k=>[k,TYN[k][L()]])];
+  const bl=[['all',T('all')],['A','A'],['B','B'],['C','C']];
+  const lv=[['all',T('all')],...['OUG','GF','1F','2F'].map(k=>[k,LV[k][L()]])];
+  $('#filters').innerHTML=
+   `<div class="frow"><span class="fl">${T('f_type')}</span>${ty.map(x=>chip('type',x[0],x[1])).join('')}</div>
+    <div class="frow"><span class="fl">${T('f_block')}</span>${bl.map(x=>chip('block',x[0],x[1])).join('')}</div>
+    <div class="frow"><span class="fl">${T('f_level')}</span>${lv.map(x=>chip('lvl',x[0],x[1])).join('')}</div>
+    <div class="frow"><span class="fl">${T('f_garden')}</span><button class="chip" type="button" data-f="garden" data-v="tog" aria-pressed="${st.garden}">${T('garden_only')}</button>
+    <span class="fl" style="margin-inline-start:auto;min-width:0">${T('f_sort')}</span><select id="sort" aria-label="${T('f_sort')}">${[['def','s_def'],['pl','s_pl'],['ph','s_ph'],['al','s_al'],['ah','s_ah']].map(o=>`<option value="${o[0]}"${st.sort===o[0]?' selected':''}>${T(o[1])}</option>`).join('')}</select></div>`;
+}
+function list(){
+  const lo={OUG:0,GF:1,'1F':2,'2F':3};
+  let l=U.filter(u=>(st.type==='all'||u.t===st.type)&&(st.block==='all'||u.b===st.block)&&(st.lvl==='all'||u.l===st.lvl)&&(!st.garden||u.g>0));
+  const s=st.sort;
+  l.sort((a,b)=>s==='pl'?a.p-b.p:s==='ph'?b.p-a.p:s==='al'?a.bua-b.bua:s==='ah'?b.bua-a.bua:(a.b.localeCompare(b.b)||lo[a.l]-lo[b.l]||a.id.localeCompare(b.id)));
+  return l;
+}
+function renderGrid(){
+  const l=list();
+  $('#count').textContent=l.length+' '+(l.length===1?T('n1'):T('nn'));
+  $('#grid').innerHTML=l.length?l.map(u=>`<button class="card" type="button" data-u="${u.id}"><div class="im"><img src="img/u/${u.img}_3d.jpg" alt=""></div><div class="bd"><div class="row1"><span class="code">${u.id}</span><span class="tb"><i class="dot t${u.t[0]}"></i>${TYN[u.t][L()]}</span></div><div class="meta">${T('block')} ${u.b} · ${LV[u.l][L()]} · ${u.bua} ${T('sqm')}</div>${u.g?`<div class="gt">${T('garden')} ${u.g} ${T('sqm')}</div>`:''}<div class="price"><small>${T('from')}</small>${usd(u.p)}</div></div></button>`).join(''):`<div class="empty">${T('none')}</div>`;
+}
+function renderLevels(){
+  $('#lvtabs').innerHTML=['OUG','GF','1F','2F'].map(k=>`<button class="chip" type="button" data-lvl="${k}" aria-pressed="${st.level===k}">${LV[k][L()]}</button>`).join('');
+  $('#lvimg').src=`img/lvl_${st.level}.jpg`;$('#lvimg').alt=LV[st.level][L()];
+  $('#lvunits').innerHTML=['A','B','C'].map(b=>{const l=U.filter(u=>u.b===b&&u.l===st.level);return `<div><h4>${T('block')} ${b} · ${l.length}</h4><div class="chips">${l.map(u=>`<button class="ucode" type="button" data-u="${u.id}"><i class="t${u.t[0]}"></i>${u.id.split('-').pop()}<span>${u.bua} ${T('sqm')}</span></button>`).join('')}</div></div>`}).join('');
+  $('#legend').innerHTML=`<span style="flex-basis:100%;margin:0 0 4px">${T('lvd')[st.level]}</span>`+['1BR','2BR','3BR'].map(k=>`<span><i style="background:${k==='1BR'?'#B0B0B0':k==='2BR'?'#8d9276':'#F4F4F2'}"></i>${TY[k][L()]}</span>`).join('');
+}
+function sched(u){const n=u.n;return {n,m:u.m}}
+function renderCalc(){
+  const u=byId[$('#csel').value]||U[0];
+  $('#cout').innerHTML=`<div class="ln"><span>${T('c_price')}<small>${u.id} · ${TY[u.t][L()]} · ${u.bua} ${T('sqm')}</small></span><b>${usd(u.p)}</b></div>
+  <div class="ln"><span>${T('c_down')}</span><b>${usd(u.d)}</b></div>
+  <div class="ln"><span>${T('c_inst')}<small>${u.n} ${T('c_x')} ${usd(u.m)}</small></span><b>${usd(u.p*0.75)}</b></div>
+  <div class="ln"><span>${T('c_last')}<small>${T('c_at')} · ${dd(u.b)}</small></span><b>${usd(u.f)}</b></div>
+  <div class="pbar" aria-hidden="true"><i></i><i></i><i></i></div>`;
+}
+function featList(u){
+  const out=u.feat.map(k=>DATA.feat[k][L()]);
+  if(u.bal)out.push(u.bal===1?T('bal1'):(lang==='ar'?`${u.bal} ${T('balN')}`:`${u.bal} balconies`));
+  return out;
+}
+function renderModal(){
+  const u=byId[st.cur];if(!u)return;
+  const same=U.filter(x=>x.img===u.img&&x.id!==u.id);
+  const ls=list(),ix=ls.findIndex(x=>x.id===u.id);
+  const src=`img/u/${u.img}_${st.view}.jpg`;
+  $('#md').innerHTML=`<button class="x" type="button" id="mx" aria-label="${T('close')}">×</button>
+  <div class="nv"><button type="button" id="mp" aria-label="${T('prev')}">${lang==='ar'?'›':'‹'}</button><button type="button" id="mn" aria-label="${T('next')}">${lang==='ar'?'‹':'›'}</button></div>
+  <div class="mg"><div class="mimg"><div class="tabs"><button class="chip" type="button" data-view="3d" aria-pressed="${st.view==='3d'}">${T('d3')}</button><button class="chip" type="button" data-view="2d" aria-pressed="${st.view==='2d'}">${T('d2')}</button></div><button class="vw" type="button" data-lb="${src}" aria-label="Zoom"><img src="${src}" alt="${u.id}"></button></div>
+  <div class="mtx"><div class="bk"><img src="img/bk_${u.b}.png" alt="${T('block')} ${u.b}"><div><div class="eyebrow">${T('block')} ${u.b} · ${LV[u.l][L()]}</div><h3>${u.id}</h3></div></div>
+  <div class="sub">${TY[u.t][L()]}</div>
+  <div class="kv"><div class="pr"><span>${T('price')}</span><b>${usd(u.p)}</b></div><div><span>${T('bua')}</span><b>${u.bua} ${T('sqm')}</b></div>${u.g?`<div><span>${T('gard')}</span><b>${u.g} ${T('sqm')}</b></div>`:''}</div>
+  <div><div class="eyebrow" style="margin-bottom:8px">${T('pstruct')}</div><div class="pbar"><i></i><i></i><i></i></div>
+  <div class="kv" style="margin-top:6px"><div><span>${T('down')} · 20%</span><b>${usd(u.d)}</b></div><div><span>${T('monthly')} · ${u.n} ${T('inst')}</span><b>${usd(u.m)}</b></div><div><span>${T('finalp')} · 5%</span><b>${usd(u.f)}</b></div><div><span>${T('deliv')}</span><b>${dd(u.b)}</b></div></div></div>
+  <div class="chips2">${featList(u).map(f=>`<span>${f}</span>`).join('')}</div>
+  ${same.length?`<div class="same">${T('same')}: ${same.map(x=>`<button type="button" data-u="${x.id}">${x.id}</button>`).join('')}</div>`:''}
+  <div class="small">${T('valid_s')}. ${DATA.disc[L()]}</div>
+  <div class="cta-row" style="margin:0"><a class="btn solid" href="https://wa.me/96170032800" target="_blank" rel="noopener" style="color:var(--accent-ink)">${T('wa')}</a><a class="btn" href="#contact" data-go="contact" data-close="1">${T('enq')}</a></div>
+  </div></div>`;
+  $('#mp').disabled=$('#mn').disabled=ls.length<2||ix<0;
+}
+function openU(id,push){st.cur=id;st.view='3d';renderModal();$('#ov').classList.add('on');document.body.style.overflow='hidden';$('#ov').scrollTop=0;if(push!==false)try{history.replaceState(null,'','#'+id)}catch(e){location.hash=id}}
+function closeU(){$('#ov').classList.remove('on');document.body.style.overflow='';st.cur=null;try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+function step(d){const ls=list(),ix=ls.findIndex(x=>x.id===st.cur);if(ix<0||ls.length<2)return;const n=ls[(ix+d+ls.length)%ls.length];openU(n.id);}
+function lb(src,dark){const e=$('#lb');e.querySelector('img').src=src;e.classList.add('on')}
+function goto(id){if(id==='top'){window.scrollTo({top:0,behavior:'smooth'});return}const e=document.getElementById(id);if(e){const y=e.getBoundingClientRect().top+scrollY-64;window.scrollTo({top:y,behavior:'smooth'})}}
+
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-f],[data-u],[data-lvl],[data-view],[data-lb],[data-go],[data-copy],#lang,#reset,#mx,#mp,#mn,#ov,#lb');if(!t)return;
+  if(t.id==='lb'){t.classList.remove('on');return}
+  if(t.dataset.lb){lb(t.dataset.lb);return}
+  if(t.id==='ov'&&e.target===t){closeU();return}
+  if(t.id==='mx'){closeU();return}
+  if(t.id==='mp'){step(-1);return}if(t.id==='mn'){step(1);return}
+  if(t.dataset.go){e.preventDefault();if(t.dataset.close)closeU();goto(t.dataset.go);return}
+  if(t.dataset.u){openU(t.dataset.u);return}
+  if(t.dataset.view){st.view=t.dataset.view;renderModal();return}
+  if(t.dataset.lvl){st.level=t.dataset.lvl;renderLevels();return}
+  if(t.dataset.f){const g=t.dataset.f;if(g==='garden')st.garden=!st.garden;else st[g]=t.dataset.v;renderFilters();renderGrid();return}
+  if(t.id==='reset'){st.type=st.block=st.lvl='all';st.garden=false;st.sort='def';renderFilters();renderGrid();return}
+  if(t.id==='lang'){lang=lang==='en'?'ar':'en';try{localStorage.setItem(LANGKEY,lang)}catch(_){}applyStatic();return}
+  if(t.dataset.copy){const v=t.dataset.copy;const done=()=>toast(T('copied'));(navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(v).then(done):Promise.reject()).catch(()=>toast(T('nocopy')));return}
+});
+document.addEventListener('change',e=>{if(e.target.id==='sort'){st.sort=e.target.value;renderGrid()}if(e.target.id==='csel')renderCalc()});
+$('#lvplan').addEventListener('click',()=>lb($('#lvimg').src));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){if($('#lb').classList.contains('on'))$('#lb').classList.remove('on');else if(st.cur)closeU()}
+  if(st.cur&&!$('#lb').classList.contains('on')){if(e.key==='ArrowRight')step(lang==='ar'?-1:1);if(e.key==='ArrowLeft')step(lang==='ar'?1:-1)}
+});
+function route(){const h=decodeURIComponent((location.hash||'').slice(1));if(byId[h])openU(h,false);else if(st.cur&&!h)closeU();else if(h&&document.getElementById(h)&&!byId[h])goto(h)}
+window.addEventListener('hashchange',route);
+applyStatic();route();
+</script>
