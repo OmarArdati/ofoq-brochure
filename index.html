@@ -150,6 +150,8 @@ html[dir=rtl] .am div{padding:1.4rem 0 1.4rem 1.2rem}
 .mapbox img{width:100%;height:auto;image-rendering:auto}
 .mapbox .pin{position:absolute;left:50%;top:49.8%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 0 0 7px rgba(26,26,26,.18)}
 .mapbox .pl{position:absolute;left:50%;top:49.8%;transform:translate(-50%,-34px);background:#1A1A1A;color:#fff;font-size:.62rem;letter-spacing:.16em;padding:3px 8px;white-space:nowrap;font-weight:600}
+.mapbox .gmap{display:block;width:100%;height:clamp(300px,42vw,420px);border:0}
+#gmlink{text-decoration:none;display:inline-block}
 .mapbox .at{position:absolute;right:6px;bottom:4px;font-size:.62rem;color:#555;background:rgba(255,255,255,.8);padding:0 4px}
 .coord{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:.88rem;color:var(--muted)}
 .band .coord{color:var(--band-muted)}.band .coord b{color:var(--band-ink)}
@@ -349,7 +351,8 @@ html[data-theme=dark] .pbar i:nth-child(1){background:#EFEFEB}
   <p class="lead" data-i="lo_p"></p>
   <div class="loc">
     <div>
-      <div class="mapbox"><img src="img/map.jpg" alt="Map of Nakhleh, Koura"><i class="pin"></i><b class="pl">ESPACE NAKHLÉ</b><span class="at">© OpenStreetMap contributors</span></div>
+      <div class="mapbox"><iframe class="gmap" title="Espace Nakhlé on Google Maps" src="https://maps.google.com/maps?q=34.3846,35.8415&z=16&hl=en&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+      <div class="coord"><a class="cp" id="gmlink" href="https://www.google.com/maps/search/?api=1&query=34.3846,35.8415" target="_blank" rel="noopener" data-i="gmaps"></a></div>
       <div class="coord"><span data-i="coords"></span><b id="coordv">34.3846° N, 35.8415° E</b><button class="cp" type="button" data-copy="34.3846, 35.8415" data-i="copy"></button></div>
     </div>
     <div><div class="eyebrow" data-i="drive_eb"></div><div class="drive" id="drive"></div><p class="note" style="color:var(--band-muted)" data-i="drive_note"></p></div>
@@ -437,7 +440,7 @@ en:{tag:'WE BUILD HORIZONS',hero_sub:'Thirty-nine residences in three blocks, se
  am:[['park','Parking for every apartment','A dedicated parking space for each apartment.'],['gate','Gated project','Enclosed by a landscaped boundary wall.'],['conc','Concierge','A concierge service for residents.'],['stor','Storage rooms','A few storage rooms in Block A.'],['room','Gym','A fitness room for residents within the development.'],['tree','Landscaping','Landscaped grounds and 10 private gardens.']],
  gtx:'Green space. 10 private gardens, c. 856 sqm: more than 25% of the 3,328 sqm site.',
  ga_eb:'GALLERY',ga_h:'The project as designed',ga_note:'Artist’s impressions. First draft design. Indicative only.',
- lo_eb:'LOCATION',lo_h:'Everything you need, minutes away.',lo_p:'Espace Nakhlé sits in Nakhleh, Koura, close to schools, healthcare and the area’s main destinations.',coords:'Coordinates',copy:'Copy',drive_eb:'APPROXIMATE DRIVE TIME FROM THE SITE',drive_note:'Drive times are approximate.',min:'min',
+ lo_eb:'LOCATION',lo_h:'Everything you need, minutes away.',lo_p:'Espace Nakhlé sits in Nakhleh, Koura, close to schools, healthcare and the area’s main destinations.',coords:'Coordinates',gmaps:'Open in Google Maps',copy:'Copy',drive_eb:'APPROXIMATE DRIVE TIME FROM THE SITE',drive_note:'Drive times are approximate.',min:'min',
  places:['Saint Refqa','David Karam Educational Center','Haykal Hospital','Palma Beach Resort','North Saray','Kousba roundabout'],
  pa_eb:'PAYMENT PLANS & DELIVERY',pa_h:'Simple, staged and predictable',pa_p:'A 20% down-payment, equal monthly instalments for 75%, and a final 5% at handover. Delivery follows the final payment of each block. November 2026 is Month 0.',
  mi:'monthly instalments',fin:'Final payment and handover',startfrom:'Starting from',seg1:'Down-payment',seg2:'Equal monthly instalments',pa_note:'Prices are in US dollars.',
@@ -468,7 +471,7 @@ ar:{tag:'WE BUILD HORIZONS',hero_sub:'تسع وثلاثون شقة في ثلاث
  am:[['park','موقف لكل شقة','موقف سيارة مخصص لكل شقة.'],['gate','مشروع مسوّر','يحيط به سور خارجي تتخلله النباتات.'],['conc','خدمة الكونسيرج','خدمة كونسيرج لسكان المشروع.'],['stor','غرف تخزين','غرف تخزين محدودة في البناية A.'],['room','نادٍ رياضي','نادٍ رياضي لسكان المشروع داخل المشروع.'],['tree','تنسيق المساحات الخضراء','مساحات مُنسَّقة و10 حدائق خاصة.']],
  gtx:'مساحات خضراء. 10 حدائق خاصة بنحو 856 م²، أي أكثر من 25% من مساحة الأرض البالغة 3,328 م².',
  ga_eb:'المعرض',ga_h:'المشروع كما صُمِّم',ga_note:'تصوّر فنّي. مسودة تصميم أولى. استرشادي فقط.',
- lo_eb:'الموقع',lo_h:'كل ما تحتاجه، على بُعد دقائق.',lo_p:'يقع Espace Nakhlé في النخلة، الكورة، قريباً من المدارس والرعاية الصحية وأبرز وجهات المنطقة.',coords:'الإحداثيات',copy:'نسخ',drive_eb:'أوقات القيادة التقريبية من الموقع',drive_note:'أوقات القيادة تقريبية.',min:'د',
+ lo_eb:'الموقع',lo_h:'كل ما تحتاجه، على بُعد دقائق.',lo_p:'يقع Espace Nakhlé في النخلة، الكورة، قريباً من المدارس والرعاية الصحية وأبرز وجهات المنطقة.',coords:'الإحداثيات',gmaps:'افتح في خرائط Google',copy:'نسخ',drive_eb:'أوقات القيادة التقريبية من الموقع',drive_note:'أوقات القيادة تقريبية.',min:'د',
  places:['القدّيسة رفقا (المزار)','مركز ديفيد كرم التربوي','مستشفى هيكل','منتجع البالما','السرايا','دوّار كوسبا'],
  pa_eb:'خطط الدفع والتسليم',pa_h:'تقسيط مريح يناسب خططك',pa_p:'دفعة أولى 20%، وأقساط شهرية متساوية بنسبة 75%، ودفعة أخيرة 5% عند التسليم. يتزامن التسليم مع الدفعة الأخيرة لكل بناية. ويُعدّ تشرين الثاني 2026 الشهر 0.',
  mi:'دفعة شهرية',fin:'الدفعة الأخيرة والتسليم',startfrom:'ابتداءً من',seg1:'دفعة أولى',seg2:'دفعات شهرية متساوية',pa_note:'الأسعار بالدولار الأميركي.',
